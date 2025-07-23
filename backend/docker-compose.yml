@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=your-secret-key-change-in-production
+    volumes:
+      - .:/app
+      - ./stubhub_demo.db:/app/stubhub_demo.db
+    restart: unless-stopped
