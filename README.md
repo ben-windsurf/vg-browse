@@ -1,70 +1,185 @@
-# Getting Started with Create React App
+# StubHub Homepage Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based replica of the StubHub homepage, featuring a modern ticketing platform interface with event browsing, search functionality, and user authentication.
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
+This project recreates the StubHub homepage experience with pixel-perfect design matching, including:
+- Interactive event search and filtering
+- Trending events carousel
+- User authentication flow
+- Responsive design with StubHub branding
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🎫 Homepage (`/`)
+- **Header Navigation**: Complete navigation bar with StubHub logo and menu categories
+- **Search Interface**: Centralized search bar with location and date filters
+- **Category Filtering**: Interactive buttons for Sports, Concerts, Theater & Comedy
+- **Trending Events**: Horizontal scrolling carousel showcasing popular events
+- **Event Cards**: Detailed cards with artist images, rankings, dates, and venues
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🔐 Authentication (`/login`)
+- User login interface
+- Form validation and user experience
 
-### `npm test`
+## Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+├── App.js              # Main application with routing configuration
+├── Landing.js          # Homepage component with search and events
+├── Login.js            # Authentication page component
+├── App.css             # Global styles and component-specific CSS
+├── index.js            # React application entry point
+└── assets/             # Static resources
+    ├── artists/        # Artist and performer images
+    ├── icons/          # UI icons and symbols
+    └── logos/          # Brand logos and graphics
+```
 
-### `npm run build`
+## Technology Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Frontend Framework**: React 19.1.0
+- **Routing**: React Router DOM 7.7.0
+- **Styling**: Custom CSS with modern design patterns
+- **Build Tool**: Create React App
+- **Testing**: Jest with React Testing Library
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Component Schema
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Landing Component
+```javascript
+// Main homepage structure
+<div className="landing-page">
+  <header>                    // Top navigation and branding
+    <div className="disclaimer">  // Pricing notice bar
+    <nav className="navbar">      // Main navigation menu
+  </header>
+  
+  <main>
+    <section className="search-section">     // Search and filters
+    <section className="trending-events">   // Event carousel
+  </main>
+</div>
+```
 
-### `npm run eject`
+### Key Data Structures
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Event Object Schema**:
+```javascript
+{
+  id: number,
+  rank: number,
+  name: string,
+  date: string,
+  time: string,
+  venue: string,
+  image: string,
+  isFavorite: boolean
+}
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Navigation Categories**:
+- Sports
+- Concerts  
+- Theater
+- Festivals
+- Top Cities
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Styling Architecture
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Design System
+- **Primary Color**: `#6f42c1` (StubHub Purple)
+- **Typography**: Modern sans-serif font stack
+- **Layout**: Flexbox and CSS Grid for responsive design
+- **Components**: Card-based design with hover effects
+- **Interactions**: Smooth transitions and micro-animations
 
-## Learn More
+### CSS Organization
+```css
+/* Global styles and resets */
+.landing-page { ... }
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+/* Header components */
+.disclaimer-bar { ... }
+.navbar { ... }
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+/* Search interface */
+.search-section { ... }
+.filter-bar { ... }
 
-### Code Splitting
+/* Event carousel */
+.trending-events { ... }
+.event-card { ... }
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Getting Started
 
-### Analyzing the Bundle Size
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn package manager
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Installation
 
-### Making a Progressive Web App
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd browse-app
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. Install dependencies:
+```bash
+npm install
+```
 
-### Advanced Configuration
+3. Start the development server:
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. Open [http://localhost:3000](http://localhost:3000) to view the application
 
-### Deployment
+### Available Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- `npm start` - Runs the development server
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run eject` - Ejects from Create React App (irreversible)
 
-### `npm run build` fails to minify
+## Development Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Routing Configuration
+The application uses React Router for navigation:
+- `/` - Landing page (homepage)
+- `/login` - Authentication page
+
+### Asset Management
+Static assets are organized in the `src/assets/` directory:
+- Artist images for event cards
+- UI icons for navigation and interactions
+- Brand logos and graphics
+
+### Responsive Design
+The application is built with mobile-first responsive design principles, ensuring optimal viewing across desktop, tablet, and mobile devices.
+
+## Future Enhancements
+
+- Event detail pages
+- Ticket purchasing flow
+- User profile management
+- Advanced search filters
+- Real-time event data integration
+- Payment processing
+
+## Contributing
+
+When contributing to this project, please:
+1. Follow the existing code style and structure
+2. Maintain the StubHub design consistency
+3. Test across different screen sizes
+4. Update documentation as needed
+
+## License
+
+This project is for educational and demonstration purposes.
