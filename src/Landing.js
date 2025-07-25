@@ -117,13 +117,13 @@ function Landing() {
       <header className="header">
         <div className="header-top">
           <p className="disclaimer">
-            StubHub is the world's top destination for ticket buyers and resellers. Prices may be higher or lower than face value.
+            viagogo is the world's top destination for ticket buyers and resellers. Prices may be higher or lower than face value.
           </p>
         </div>
         
         <nav className="navbar">
           <div className="nav-left">
-            <img src={logo} alt="StubHub" className="nav-logo" />
+            <img src={logo} alt="viagogo" className="nav-logo" />
             <div className="nav-links">
               <button className="nav-link">Sports</button>
               <button className="nav-link">Concerts</button>

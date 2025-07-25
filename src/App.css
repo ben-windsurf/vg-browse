@@ -375,8 +375,8 @@
 }
 
 .location-icon {
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   filter: brightness(0) invert(1);
 }
 
