@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SearchBar from './shared/components/SearchBar';
 import logo from './assets/logos/logo.png';
 import profileIcon from './assets/icons/profile.png';
 import searchIcon from './assets/icons/search.png';
@@ -146,44 +147,16 @@ function Landing() {
       </header>
 
       {/* Search Section */}
-      <div className="search-section">
-        <div className="search-container">
-          <div className="search-bar">
-            <img src={searchIcon} alt="Search" className="search-icon" />
-            <input 
-              type="text" 
-              placeholder="Search events, artists, teams, and more"
-              className="search-input"
-            />
-          </div>
-        </div>
-        
-        {/* Filter Bar */}
-        <div className="filter-bar">
-          <div className="location-selector">
-            <img src={navigationIcon} alt="Location" className="location-icon" />
-            <span>Mexico City</span>
-            <span className="dropdown-arrow">▼</span>
-          </div>
-          
-          <div className="date-selector">
-            <span>All dates</span>
-            <span className="dropdown-arrow">▼</span>
-          </div>
-          
-          <div className="category-filters">
-            {['All types', 'Sports', 'Concerts', 'Theater & Comedy'].map((category) => (
-              <button
-                key={category}
-                className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(category)}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+      <SearchBar 
+        theme="green"
+        searchIcon={searchIcon}
+        navigationIcon={navigationIcon}
+        location="Mexico City"
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+        categories={['All types', 'Sports', 'Concerts', 'Theater & Comedy']}
+        placeholder="Search events, artists, teams, and more"
+      />
 
       {/* Trending Events */}
       <div className="trending-section">
