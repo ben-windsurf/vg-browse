@@ -270,7 +270,7 @@
 }
 
 .nav-link:hover {
-  color: #6f42c1;
+  color: #78a42c;
 }
 
 .nav-right {
@@ -344,7 +344,7 @@
 
 .search-input:focus {
   outline: none;
-  border-color: #6f42c1;
+  border-color: #78a42c;
   background-color: white;
 }
 
@@ -366,7 +366,7 @@
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background-color: #6f42c1;
+  background-color: #78a42c;
   color: white;
   border-radius: 20px;
   font-size: 14px;
@@ -375,8 +375,8 @@
 }
 
 .location-icon {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   filter: brightness(0) invert(1);
 }
 
@@ -404,13 +404,13 @@
 }
 
 .filter-btn:hover {
-  border-color: #6f42c1;
-  color: #6f42c1;
+  border-color: #78a42c;
+  color: #78a42c;
 }
 
 .filter-btn.active {
-  background-color: #6f42c1;
-  border-color: #6f42c1;
+  background-color: #78a42c;
+  border-color: #78a42c;
   color: white;
 }
 
@@ -481,7 +481,7 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background-color: #6f42c1;
+  background-color: #78a42c;
   color: white;
   padding: 4px 8px;
   border-radius: 12px;
@@ -536,7 +536,7 @@
 
 .event-date {
   font-size: 14px;
-  color: #6f42c1;
+  color: #78a42c;
   font-weight: 600;
   margin: 0 0 4px 0;
 }

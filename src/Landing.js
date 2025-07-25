@@ -162,7 +162,7 @@ function Landing() {
         <div className="filter-bar">
           <div className="location-selector">
             <img src={navigationIcon} alt="Location" className="location-icon" />
-            <span>San Francisco</span>
+            <span>Mexico City</span>
             <span className="dropdown-arrow">▼</span>
           </div>
           
