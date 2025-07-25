@@ -1,9 +1,6 @@
 from fastapi import FastAPI, HTTPException, Depends, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import create_engine, Column, Integer, String, DateTime
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, Session
 from passlib.context import CryptContext
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
@@ -11,11 +8,8 @@ from pydantic import BaseModel
 from typing import Optional, List
 import os
 
-# Database setup
-SQLITE_DATABASE_URL = "sqlite:///./stubhub_demo.db"
-engine = create_engine(SQLITE_DATABASE_URL, connect_args={"check_same_thread": False})
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
+# Import database models and dependencies
+from database import User, Event, get_user_db, get_event_db, init_event_db
 
 # JWT Configuration
 SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
@@ -25,15 +19,6 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 # Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 security = HTTPBearer()
-
-# Database Models
-class User(Base):
-    __tablename__ = "users"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow)
 
 # Pydantic Models
 class UserCreate(BaseModel):
@@ -55,8 +40,8 @@ class EventResponse(BaseModel):
     venue: str
     image_url: Optional[str] = None
 
-# Create tables
-Base.metadata.create_all(bind=engine)
+# Initialize event database if needed
+init_event_db()
 
 # FastAPI app
 app = FastAPI(title="StubHub Demo API", version="1.0.0")
@@ -70,13 +55,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Database dependency
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+
 
 # Utility functions
 def verify_password(plain_password, hashed_password):
@@ -95,7 +74,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security), db: Session = Depends(get_db)):
+def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security), db = Depends(get_user_db)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -115,37 +94,7 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
         raise credentials_exception
     return user
 
-# Hardcoded events data (matching the frontend)
-EVENTS_DATA = [
-    {
-        "id": 1,
-        "artist": "Rufus Du Sol",
-        "date": "Sat, Jul 26 • 8:00 PM",
-        "venue": "Chase Center",
-        "image_url": "/assets/artists/rufus.png"
-    },
-    {
-        "id": 2,
-        "artist": "Billie Eilish",
-        "date": "Sun, Aug 10 • 7:30 PM",
-        "venue": "Oracle Park",
-        "image_url": "/assets/artists/billie.png"
-    },
-    {
-        "id": 3,
-        "artist": "Zach Bryan",
-        "date": "Fri, Sep 15 • 8:00 PM",
-        "venue": "Shoreline Amphitheatre",
-        "image_url": "/assets/artists/zach.png"
-    },
-    {
-        "id": 4,
-        "artist": "Lady Gaga",
-        "date": "Tue, Jul 22 • 8:00 PM",
-        "venue": "SAP Center",
-        "image_url": "/assets/artists/gaga.png"
-    }
-]
+
 
 # Routes
 @app.get("/")
@@ -153,7 +102,7 @@ async def root():
     return {"message": "StubHub Demo API"}
 
 @app.post("/auth/signup", response_model=Token)
-async def signup(user: UserCreate, db: Session = Depends(get_db)):
+async def signup(user: UserCreate, db = Depends(get_user_db)):
     # Check if user already exists
     db_user = db.query(User).filter(User.email == user.email).first()
     if db_user:
@@ -178,7 +127,7 @@ async def signup(user: UserCreate, db: Session = Depends(get_db)):
     return {"access_token": access_token, "token_type": "bearer"}
 
 @app.post("/auth/login", response_model=Token)
-async def login(user: UserLogin, db: Session = Depends(get_db)):
+async def login(user: UserLogin, db = Depends(get_user_db)):
     # Authenticate user
     db_user = db.query(User).filter(User.email == user.email).first()
     if not db_user or not verify_password(user.password, db_user.hashed_password):
@@ -197,14 +146,16 @@ async def login(user: UserLogin, db: Session = Depends(get_db)):
     return {"access_token": access_token, "token_type": "bearer"}
 
 @app.get("/events", response_model=List[EventResponse])
-async def get_events():
-    """Get all events (hardcoded for demo)"""
-    return EVENTS_DATA
+async def get_events(db = Depends(get_event_db)):
+    """Get all events from the database"""
+    events = db.query(Event).all()
+    return events
 
 @app.get("/events/protected", response_model=List[EventResponse])
-async def get_protected_events(current_user: User = Depends(get_current_user)):
+async def get_protected_events(current_user: User = Depends(get_current_user), db = Depends(get_event_db)):
     """Protected endpoint example - requires authentication"""
-    return EVENTS_DATA
+    events = db.query(Event).all()
+    return events
 
 if __name__ == "__main__":
     import uvicorn
