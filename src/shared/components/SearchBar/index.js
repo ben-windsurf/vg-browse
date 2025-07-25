@@ -22,7 +22,11 @@ const SearchBar = ({
   categories = ['All types', 'Sports', 'Concerts', 'Theater & Comedy'],
   placeholder = "Search events, artists, teams, and more"
 }) => {
-  console.log('SearchBar props:', { theme, location, selectedCategory });
+  console.log('=== SearchBar Component Rendered ===');
+  console.log('SearchBar props received:', { theme, location, selectedCategory });
+  console.log('SearchBar default location would be:', 'San Francisco');
+  console.log('SearchBar actual location prop:', location);
+  
   const themeColors = themes[theme] || themes.purple;
 
   return (
