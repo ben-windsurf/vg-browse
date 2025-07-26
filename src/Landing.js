@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SearchBar from './components/SearchBar/SearchBar';
 import logo from './assets/logos/logo.png';
 import profileIcon from './assets/icons/profile.png';
 import searchIcon from './assets/icons/search.png';
@@ -148,14 +149,11 @@ function Landing() {
       {/* Search Section */}
       <div className="search-section">
         <div className="search-container">
-          <div className="search-bar">
-            <img src={searchIcon} alt="Search" className="search-icon" />
-            <input 
-              type="text" 
-              placeholder="Search events, artists, teams, and more"
-              className="search-input"
-            />
-          </div>
+          <SearchBar 
+            themeColor="#80a42c"
+            searchIcon={searchIcon}
+            placeholder="Search events, artists, teams, and more"
+          />
         </div>
         
         {/* Filter Bar */}
