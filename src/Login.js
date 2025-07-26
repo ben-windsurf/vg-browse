@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import logo from './assets/logos/logo.png';
 import facebookLogo from './assets/logos/facebook.png';
-import appleLogo from './assets/logos/apple.png';
-import googleLogo from './assets/logos/google.png';
 import './App.css';
 
 function Login() {
@@ -23,10 +21,10 @@ function Login() {
     <div className="App">
       <div className="login-container">
         <div className="logo-container">
-          <img src={logo} alt="StubHub" className="logo" />
+          <img src={logo} alt="viagogo" className="logo" />
         </div>
         
-        <h1 className="login-title">Sign in to StubHub</h1>
+        <h1 className="login-title">Sign in to viagogo</h1>
         
         <form onSubmit={handleSubmit} className="login-form">
           <div className="input-group">
@@ -81,19 +79,11 @@ function Login() {
             Log in with Facebook
           </button>
           
-          <button className="apple-btn">
-            <img src={appleLogo} alt="Apple" className="social-icon" />
-            Sign in with Apple
-          </button>
-          
-          <button className="google-btn">
-            <img src={googleLogo} alt="Google" className="social-icon" />
-            Sign in with Google
-          </button>
+
         </div>
         
         <div className="create-account">
-          <span>New to StubHub? </span>
+          <span>New to viagogo? </span>
           <button type="button" className="create-account-link" onClick={() => console.log('Create account clicked')}>Create account</button>
         </div>
       </div>

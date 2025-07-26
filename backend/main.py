@@ -44,7 +44,7 @@ class EventResponse(BaseModel):
 init_event_db()
 
 # FastAPI app
-app = FastAPI(title="StubHub Demo API", version="1.0.0")
+app = FastAPI(title="viagogo Demo API", version="1.0.0")
 
 # CORS middleware
 app.add_middleware(
@@ -99,7 +99,7 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
 # Routes
 @app.get("/")
 async def root():
-    return {"message": "StubHub Demo API"}
+    return {"message": "viagogo Demo API"}
 
 @app.post("/auth/signup", response_model=Token)
 async def signup(user: UserCreate, db = Depends(get_user_db)):

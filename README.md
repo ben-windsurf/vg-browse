@@ -1,21 +1,21 @@
-# StubHub Clone
+# viagogo Clone
 
-A full-stack application featuring a React frontend that replicates the StubHub homepage and a FastAPI backend with JWT authentication and event endpoints.
+A full-stack application featuring a React frontend that replicates the viagogo homepage and a FastAPI backend with JWT authentication and event endpoints.
 
 ## Project Overview
 
-This project recreates the StubHub experience with:
+This project recreates the viagogo experience with:
 - Interactive event search and filtering
 - Trending events carousel
 - User authentication flow
-- Responsive design with StubHub branding
+- Responsive design with viagogo branding
 - FastAPI backend with JWT authentication
 - SQLite database for user management
 
 ## Features
 
 ### 🎫 Homepage (`/`)
-- **Header Navigation**: Complete navigation bar with StubHub logo and menu categories
+- **Header Navigation**: Complete navigation bar with viagogo logo and menu categories
 - **Search Interface**: Centralized search bar with location and date filters
 - **Category Filtering**: Interactive buttons for Sports, Concerts, Theater & Comedy
 - **Trending Events**: Horizontal scrolling carousel showcasing popular events
@@ -116,7 +116,7 @@ backend/
 ## Styling Architecture
 
 ### Design System
-- **Primary Color**: `#6f42c1` (StubHub Purple)
+- **Primary Color**: `#80a42c` (viagogo Green)
 - **Typography**: Modern sans-serif font stack
 - **Layout**: Flexbox and CSS Grid for responsive design
 - **Components**: Card-based design with hover effects
@@ -281,7 +281,7 @@ curl -H "Authorization: Bearer YOUR_JWT_TOKEN" \
 
 When contributing to this project, please:
 1. Follow the existing code style and structure
-2. Maintain the StubHub design consistency
+2. Maintain the viagogo design consistency
 3. Test across different screen sizes
 4. Update documentation as needed
 

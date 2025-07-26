@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple test script to demonstrate the StubHub Demo API functionality
+Simple test script to demonstrate the viagogo Demo API functionality
 """
 import requests
 import json
@@ -8,7 +8,7 @@ import json
 BASE_URL = "http://localhost:8000"
 
 def test_api():
-    print("🎫 Testing StubHub Demo API\n")
+    print("🎫 Testing viagogo Demo API\n")
     
     # Test root endpoint
     print("1. Testing root endpoint...")
@@ -29,7 +29,7 @@ def test_api():
     # Test signup
     print("3. Testing user signup...")
     signup_data = {
-        "email": "demo@stubhub.com",
+        "email": "demo@viagogo.com",
         "password": "demopassword123"
     }
     response = requests.post(f"{BASE_URL}/auth/signup", json=signup_data)
@@ -46,7 +46,7 @@ def test_api():
     # Test login
     print("4. Testing user login...")
     login_data = {
-        "email": "demo@stubhub.com",
+        "email": "demo@viagogo.com",
         "password": "demopassword123"
     }
     response = requests.post(f"{BASE_URL}/auth/login", json=login_data)
