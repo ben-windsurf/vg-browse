@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SearchBar } from 'component-library';
-import logo from './assets/logos/logo.png?url';
 import profileIcon from './assets/icons/profile.png';
-import searchIcon from './assets/icons/search.png?url';
 import navigationIcon from './assets/icons/navigation.png';
 import rufusImg from './assets/artists/rufus.png';
 import billieImg from './assets/artists/billie.png';
@@ -18,6 +16,9 @@ import disclosureImg from './assets/artists/disclosure.png';
 import teddyImg from './assets/artists/teddy.png';
 import duaImg from './assets/artists/dua.png';
 import './App.css';
+
+const logo = '/assets/logos/logo.png';
+const searchIcon = '/assets/icons/search.png';
 
 function Landing() {
   const [selectedCategory, setSelectedCategory] = useState('All types');
