@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SearchBar } from 'component-library';
-import logo from './assets/logos/logo.png';
+import logo from './assets/logos/logo.png?url';
 import profileIcon from './assets/icons/profile.png';
-import searchIcon from './assets/icons/search.png';
+import searchIcon from './assets/icons/search.png?url';
 import navigationIcon from './assets/icons/navigation.png';
 import rufusImg from './assets/artists/rufus.png';
 import billieImg from './assets/artists/billie.png';
