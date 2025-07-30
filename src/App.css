@@ -7,15 +7,6 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
-.login-container {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  width: 100%;
-  max-width: 400px;
-  margin: 20px;
-}
 
 .logo-container {
   text-align: center;
@@ -116,24 +107,6 @@
   background-color: #5a3fa8;
 }
 
-.email-code-btn {
-  width: 100%;
-  padding: 12px;
-  background-color: transparent;
-  color: #684cbc;
-  border: 2px solid #684cbc;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 24px;
-  transition: all 0.2s;
-}
-
-.email-code-btn:hover {
-  background-color: #684cbc;
-  color: white;
-}
 
 .social-login {
   margin-bottom: 24px;
