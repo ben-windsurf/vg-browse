@@ -93,47 +93,6 @@
   text-decoration: underline;
 }
 
-.sign-in-btn {
-  width: 100%;
-  padding: 12px;
-  background-color: #c5c5c5;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: not-allowed;
-  transition: background-color 0.2s;
-  margin-bottom: -8px;
-}
-
-.sign-in-btn:not(.disabled) {
-  background-color: #684cbc;
-  cursor: pointer;
-}
-
-.sign-in-btn:not(.disabled):hover {
-  background-color: #5a3fa8;
-}
-
-.email-code-btn {
-  width: 100%;
-  padding: 12px;
-  background-color: transparent;
-  color: #684cbc;
-  border: 2px solid #684cbc;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 24px;
-  transition: all 0.2s;
-}
-
-.email-code-btn:hover {
-  background-color: #684cbc;
-  color: white;
-}
 
 .social-login {
   margin-bottom: 24px;
