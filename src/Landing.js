@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SearchBar } from 'component-library';
-import 'component-library/dist/index.css';
+import { SearchBar } from '@ben-windsurf/component-library';
+import '@ben-windsurf/component-library/dist/index.css';
 import logo from './assets/logos/logo.png';
 import profileIcon from './assets/icons/profile.png';
 import searchIcon from './assets/icons/search.png';
